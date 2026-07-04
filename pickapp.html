@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pick App Case Study — Youssif Amin</title>
+  <meta name="description" content="Pick App: First Social Commerce App in MENA — Product Design Case Study by Youssif Amin" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #FFFEF7;
+      --black:   #000;
+      --white:   #fff;
+      --pink:    #FF90E8;
+      --yellow:  #FFE14D;
+      --green:   #B9FF66;
+      --blue:    #A8D8FF;
+      --purple:  #C8B4FF;
+      --border:  2px solid #000;
+      --shadow:  4px 4px 0 #000;
+      --radius:  12px;
+      --font:    'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--black); font-family: var(--font); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: var(--black); }
+
+    /* NAV */
+    nav { border-bottom: var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-back { font-size: 14px; font-weight: 700; text-decoration: none; color: var(--black); border: var(--border); border-radius: 100px; padding: 8px 18px; background: var(--white); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { box-shadow: none; transform: translate(4px,4px); }
+    .nav-logo { font-size: 15px; font-weight: 800; text-decoration: none; color: var(--black); }
+    .nav-resume { font-size: 14px; font-weight: 700; text-decoration: none; color: var(--black); border: var(--border); border-radius: 100px; padding: 8px 18px; background: var(--pink); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+    .nav-resume:hover { box-shadow: none; transform: translate(4px,4px); }
+
+    /* LAYOUT */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+    /* HERO */
+    .cs-hero { padding: 72px 32px 0; border-bottom: var(--border); }
+    .cs-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .cs-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border: var(--border); border-radius: 100px; padding: 5px 14px; background: var(--purple); margin-bottom: 24px; }
+    .cs-title { font-size: clamp(36px, 6vw, 72px); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin-bottom: 40px; max-width: 800px; }
+    .cs-meta { border: var(--border); border-radius: var(--radius); overflow: hidden; display: inline-flex; box-shadow: var(--shadow); }
+    .cs-meta-item { padding: 16px 28px; border-right: var(--border); background: var(--white); }
+    .cs-meta-item:last-child { border-right: none; }
+    .cs-meta-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #777; margin-bottom: 4px; }
+    .cs-meta-val { font-size: 16px; font-weight: 800; }
+
+    /* HERO IMAGE */
+    .hero-img-wrap { margin-top: 56px; border-top: var(--border); background: #1a1a2e; overflow: hidden; }
+    .hero-img-wrap img { width: 100%; display: block; max-height: 560px; object-fit: cover; object-position: center top; }
+
+    /* SECTION */
+    section { padding: 80px 32px; border-bottom: var(--border); }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+    .section-heading { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 32px; }
+    .body-text { font-size: 17px; line-height: 1.8; color: #222; max-width: 720px; }
+    .body-text strong { font-weight: 800; }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box { border: var(--border); border-radius: var(--radius); background: var(--purple); box-shadow: var(--shadow); padding: 28px 32px; margin-bottom: 40px; max-width: 760px; }
+    .highlight-box p { font-size: 18px; font-weight: 500; line-height: 1.7; }
+    .highlight-box strong { font-weight: 800; }
+
+    /* PROCESS GRID */
+    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .process-card { border: var(--border); border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); padding: 28px; }
+    .process-card.yellow { background: var(--yellow); }
+    .process-card.green  { background: var(--green); }
+    .process-card.purple { background: var(--purple); }
+    .process-num { font-size: 32px; font-weight: 800; letter-spacing: -.03em; margin-bottom: 12px; }
+    .process-card-title { font-size: 17px; font-weight: 800; margin-bottom: 12px; }
+    .process-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .process-list li { font-size: 14px; color: #333; display: flex; align-items: flex-start; gap: 8px; }
+    .process-list li::before { content: '→'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* SOLUTION */
+    .solution-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .sol-card { border: var(--border); border-radius: var(--radius); padding: 28px; background: var(--white); box-shadow: var(--shadow); }
+    .sol-icon { font-size: 32px; margin-bottom: 12px; }
+    .sol-title { font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+    .sol-desc { font-size: 14px; color: #444; line-height: 1.65; }
+
+    /* SCREENS - 2x2 for 4 screens */
+    .screens-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .screen-card { border: var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #1a1a2e; }
+    .screen-card img { width: 100%; display: block; aspect-ratio: 9/18; object-fit: cover; object-position: top; }
+    .screen-label { padding: 14px 18px; border-top: var(--border); background: var(--white); }
+    .screen-label-title { font-size: 13px; font-weight: 800; margin-bottom: 3px; }
+    .screen-label-desc { font-size: 12px; color: #555; line-height: 1.5; }
+
+    /* RESULTS */
+    .results-band { background: var(--purple); padding: 64px 32px; border-bottom: var(--border); }
+    .results-inner { max-width: 1100px; margin: 0 auto; }
+    .results-text { font-size: clamp(22px, 3vw, 36px); font-weight: 800; letter-spacing: -.02em; line-height: 1.4; max-width: 700px; }
+    .results-kpi { display: inline-flex; align-items: center; gap: 10px; border: var(--border); border-radius: 100px; padding: 12px 24px; background: var(--black); color: var(--white); font-size: 15px; font-weight: 700; }
+
+    /* CASE NAV */
+    .case-nav { padding: 48px 32px; border-bottom: var(--border); }
+    .case-nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .case-nav-btn { font-size: 14px; font-weight: 700; text-decoration: none; color: var(--black); border: var(--border); border-radius: 100px; padding: 12px 24px; background: var(--white); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+    .case-nav-btn:hover { box-shadow: none; transform: translate(4px,4px); }
+    .case-nav-btn.prev { background: var(--pink); }
+
+    /* FOOTER */
+    footer { padding: 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: #666; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-a { font-size: 13px; font-weight: 700; text-decoration: none; color: var(--black); border-bottom: 2px solid var(--black); }
+    .footer-a:hover { color: #8870cc; border-color: #8870cc; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .55s, transform .55s cubic-bezier(.25,.46,.45,.94); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+
+    @media (max-width: 800px) {
+      .process-grid, .solution-row { grid-template-columns: 1fr; }
+      .screens-grid { grid-template-columns: 1fr; }
+      .cs-meta { flex-wrap: wrap; }
+      .cs-meta-item { border-right: none; border-bottom: var(--border); }
+      .cs-meta-item:last-child { border-bottom: none; }
+      section { padding: 56px 24px; }
+      .cs-hero { padding: 48px 24px 0; }
+      .case-nav { padding: 32px 24px; }
+      footer { padding: 24px; }
+      .nav-inner { padding: 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="youssif-portfolio.html" class="nav-back">← Back to portfolio</a>
+      <a href="youssif-portfolio.html" class="nav-logo">Youssif Amin ✦</a>
+      <a href="https://drive.google.com/file/d/1Vj0wcOY6pjjpM0lr2gg_ZvWLXsr53pqn/view" target="_blank" rel="noopener" class="nav-resume">Resume ↗</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-inner">
+      <div class="cs-tag">Case Study</div>
+      <h1 class="cs-title">First Social Commerce App in the MENA Region</h1>
+      <div class="cs-meta">
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Company</div>
+          <div class="cs-meta-val">Pick App</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Role</div>
+          <div class="cs-meta-val">Product Design</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Year</div>
+          <div class="cs-meta-val">2024</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Timeline</div>
+          <div class="cs-meta-val">3 Months</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="https://framerusercontent.com/images/zDCJtCizrsIJOy901Rx0Lh9IvCI.png" alt="Pick App overview" onerror="this.style.minHeight='320px'; this.style.display='block';" />
+    </div>
+  </div>
+
+  <!-- PROJECT DESCRIPTION -->
+  <section>
+    <div class="container">
+      <div class="section-label reveal">Overview</div>
+      <h2 class="section-heading reveal">Commerce meets content, for the first time in MENA.</h2>
+      <div class="highlight-box reveal">
+        <p>PickApp is a <strong>social commerce platform</strong> transforming online shopping in Saudi Arabia by combining short-form videos and live commerce. It bridges the gap between content, community, and commerce — making product discovery engaging and interactive.</p>
+      </div>
+      <p class="body-text reveal">
+        Before Pick App, there was no product in the MENA region that let creators sell directly through short-form video content. The challenge was designing an experience that felt as natural as scrolling TikTok, but with a seamless buying flow embedded throughout.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section>
+    <div class="container">
+      <div class="section-label reveal">My Process</div>
+      <h2 class="section-heading reveal">Three months. Zero shortcuts.</h2>
+      <div class="process-grid">
+        <div class="process-card yellow reveal">
+          <div class="process-num">01</div>
+          <div class="process-card-title">Research & Planning</div>
+          <ul class="process-list">
+            <li>Market research on Saudi Arabia's e-commerce landscape</li>
+            <li>Benchmarked TikTok Shop, Instagram Shopping, Pinduoduo</li>
+            <li>Defined target audience segments</li>
+            <li>Outlined key features based on user needs</li>
+          </ul>
+        </div>
+        <div class="process-card green reveal d1">
+          <div class="process-num">02</div>
+          <div class="process-card-title">Design & Prototyping</div>
+          <ul class="process-list">
+            <li>Intuitive UI for video-first shopping</li>
+            <li>Designed onboarding & interest selection flows</li>
+            <li>Interactive Figma prototypes for user testing</li>
+            <li>Iteratively refined based on feedback</li>
+          </ul>
+        </div>
+        <div class="process-card purple reveal d2">
+          <div class="process-num">03</div>
+          <div class="process-card-title">Testing & Optimization</div>
+          <ul class="process-list">
+            <li>Tested across devices and platforms</li>
+            <li>Beta testing with real Saudi users</li>
+            <li>Iterated based on usability metrics</li>
+            <li>Optimized checkout conversion rate</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section>
+    <div class="container">
+      <div class="section-label reveal">The Solution</div>
+      <h2 class="section-heading reveal">Scroll. Discover. Buy. That simple.</h2>
+      <p class="body-text reveal" style="margin-bottom: 40px;">
+        PickApp integrates social engagement with e-commerce through three core experiences:
+      </p>
+      <div class="solution-row">
+        <div class="sol-card reveal">
+          <div class="sol-icon">📱</div>
+          <div class="sol-title">Short-Form Video Shopping</div>
+          <div class="sol-desc">Users discover products through engaging creator content — the TikTok model, built for Saudi commerce.</div>
+        </div>
+        <div class="sol-card reveal d1">
+          <div class="sol-icon">🔴</div>
+          <div class="sol-title">Live Commerce</div>
+          <div class="sol-desc">Real-time interactions between sellers and buyers. Watch, ask, and buy — all in one stream.</div>
+        </div>
+        <div class="sol-card reveal d2">
+          <div class="sol-icon">✅</div>
+          <div class="sol-title">Seamless Checkout</div>
+          <div class="sol-desc">Instant purchases without leaving the app. Zero friction from "I want this" to "it's mine."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENS -->
+  <section>
+    <div class="container">
+      <div class="section-label reveal">Key Screens</div>
+      <h2 class="section-heading reveal">Built screen by screen.</h2>
+      <div class="screens-grid">
+        <div class="screen-card reveal">
+          <img src="https://framerusercontent.com/images/HAHZj6RVP1Cs566CHON8oW2d5E.png" alt="HomePage" onerror="this.style.background='#1a1a2e'; this.style.minHeight='300px';" />
+          <div class="screen-label">
+            <div class="screen-label-title">Home — Video Feed</div>
+            <div class="screen-label-desc">Immersive product discovery inspired by TikTok's scroll experience — but built for shopping.</div>
+          </div>
+        </div>
+        <div class="screen-card reveal d1">
+          <img src="https://framerusercontent.com/images/OJHObGRMDMgOqp4AOECNhqwUUKc.png" alt="Interests Selection" onerror="this.style.background='#1a1a2e'; this.style.minHeight='300px';" />
+          <div class="screen-label">
+            <div class="screen-label-title">Interests Selection</div>
+            <div class="screen-label-desc">Pick what you love. We personalize your feed with products and creators that match.</div>
+          </div>
+        </div>
+        <div class="screen-card reveal d2">
+          <img src="https://framerusercontent.com/images/jPQ42vi9vkRcnODBeSnEoxraDU.png" alt="Walkthrough" onerror="this.style.background='#1a1a2e'; this.style.minHeight='300px';" />
+          <div class="screen-label">
+            <div class="screen-label-title">Onboarding Walkthrough</div>
+            <div class="screen-label-desc">Reduces confusion and ensures users can navigate the app smoothly from day one.</div>
+          </div>
+        </div>
+        <div class="screen-card reveal d3">
+          <img src="https://framerusercontent.com/images/63lmBJ9q1Rf8w2978vBxQUy6QLU.png" alt="User Profile" onerror="this.style.background='#1a1a2e'; this.style.minHeight='300px';" />
+          <div class="screen-label">
+            <div class="screen-label-title">Creator / User Profile</div>
+            <div class="screen-label-desc">Influencers showcase their favorite products and drive sales through their video content.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <div class="results-band">
+    <div class="results-inner">
+      <div class="section-label reveal">Impact</div>
+      <p class="results-text reveal">
+        Pick App launched as the first social commerce platform in the MENA region — a product category that didn't exist there before.
+      </p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;">
+        <span class="results-kpi reveal">🥇 First of its kind in MENA</span>
+        <span class="results-kpi reveal d1">🇸🇦 Built for Saudi Arabia</span>
+        <span class="results-kpi reveal d2">⚡ Shipped in 3 months</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE NAV -->
+  <div class="case-nav">
+    <div class="case-nav-inner">
+      <a href="workclub.html" class="case-nav-btn prev">← Workclub</a>
+      <a href="youssif-portfolio.html" class="case-nav-btn">All Projects →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Youssif Amin.</span>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/youssifamin/" class="footer-a" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://drive.google.com/file/d/1Vj0wcOY6pjjpM0lr2gg_ZvWLXsr53pqn/view" class="footer-a" target="_blank" rel="noopener">Resume</a>
+      <a href="mailto:info@beyond.com.sa" class="footer-a">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
