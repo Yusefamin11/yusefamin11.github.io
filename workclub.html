@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workclub Case Study — Youssif Amin</title>
+  <meta name="description" content="WorkClub: Unlocking Flexible Workspaces On-Demand — Product Design Case Study by Youssif Amin" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #FFFEF7;
+      --black:   #000;
+      --white:   #fff;
+      --pink:    #FF90E8;
+      --yellow:  #FFE14D;
+      --green:   #B9FF66;
+      --blue:    #A8D8FF;
+      --border:  2px solid #000;
+      --shadow:  4px 4px 0 #000;
+      --radius:  12px;
+      --font:    'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--black); font-family: var(--font); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: var(--black); }
+
+    /* NAV */
+    nav { border-bottom: var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-back { font-size: 14px; font-weight: 700; text-decoration: none; color: var(--black); border: var(--border); border-radius: 100px; padding: 8px 18px; background: var(--white); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { box-shadow: none; transform: translate(4px,4px); }
+    .nav-logo { font-size: 15px; font-weight: 800; text-decoration: none; color: var(--black); }
+    .nav-resume { font-size: 14px; font-weight: 700; text-decoration: none; color: var(--black); border: var(--border); border-radius: 100px; padding: 8px 18px; background: var(--pink); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+    .nav-resume:hover { box-shadow: none; transform: translate(4px,4px); }
+
+    /* LAYOUT */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+    /* HERO */
+    .cs-hero { padding: 72px 32px 0; border-bottom: var(--border); }
+    .cs-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .cs-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border: var(--border); border-radius: 100px; padding: 5px 14px; background: var(--pink); margin-bottom: 24px; }
+    .cs-title { font-size: clamp(36px, 6vw, 72px); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin-bottom: 40px; max-width: 800px; }
+    .cs-meta { display: flex; gap: 0; border: var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 0; display: inline-flex; box-shadow: var(--shadow); }
+    .cs-meta-item { padding: 16px 28px; border-right: var(--border); background: var(--white); }
+    .cs-meta-item:last-child { border-right: none; }
+    .cs-meta-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #777; margin-bottom: 4px; }
+    .cs-meta-val { font-size: 16px; font-weight: 800; }
+
+    /* HERO IMAGE */
+    .hero-img-wrap { margin-top: 56px; border-top: var(--border); background: #f0ede8; overflow: hidden; }
+    .hero-img-wrap img { width: 100%; display: block; max-height: 560px; object-fit: cover; }
+
+    /* SECTION */
+    section { padding: 80px 32px; border-bottom: var(--border); }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+    .section-heading { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 32px; }
+    .body-text { font-size: 17px; line-height: 1.8; color: #222; max-width: 720px; }
+    .body-text strong { font-weight: 800; }
+
+    /* PROCESS GRID */
+    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+    .process-card { border: var(--border); border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); padding: 28px; }
+    .process-card.yellow { background: var(--yellow); }
+    .process-card.green  { background: var(--green); }
+    .process-card.blue   { background: var(--blue); }
+    .process-num { font-size: 32px; font-weight: 800; letter-spacing: -.03em; margin-bottom: 12px; }
+    .process-card-title { font-size: 17px; font-weight: 800; margin-bottom: 12px; }
+    .process-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .process-list li { font-size: 14px; color: #333; display: flex; align-items: flex-start; gap: 8px; }
+    .process-list li::before { content: '→'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* SOLUTION CARDS */
+    .solution-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+    .sol-card { border: var(--border); border-radius: var(--radius); padding: 28px; background: var(--white); box-shadow: var(--shadow); }
+    .sol-icon { font-size: 32px; margin-bottom: 12px; }
+    .sol-title { font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+    .sol-desc { font-size: 14px; color: #444; line-height: 1.65; }
+
+    /* SCREENS */
+    .screens-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+    .screen-card { border: var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #f0ede8; }
+    .screen-card img { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; object-position: top; }
+    .screen-label { padding: 14px 18px; border-top: var(--border); background: var(--white); }
+    .screen-label-title { font-size: 13px; font-weight: 800; margin-bottom: 3px; }
+    .screen-label-desc { font-size: 12px; color: #555; line-height: 1.5; }
+
+    /* RESULTS */
+    .results-band { background: var(--yellow); padding: 64px 32px; border-bottom: var(--border); }
+    .results-inner { max-width: 1100px; margin: 0 auto; }
+    .results-text { font-size: clamp(22px, 3vw, 36px); font-weight: 800; letter-spacing: -.02em; line-height: 1.4; max-width: 680px; }
+    .results-kpi { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; border: var(--border); border-radius: 100px; padding: 12px 24px; background: var(--black); color: var(--white); font-size: 15px; font-weight: 700; }
+
+    /* NAV BOTTOM */
+    .case-nav { padding: 48px 32px; display: flex; align-items: center; justify-content: space-between; border-bottom: var(--border); max-width: none; }
+    .case-nav-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .case-nav-btn { font-size: 14px; font-weight: 700; text-decoration: none; color: var(--black); border: var(--border); border-radius: 100px; padding: 12px 24px; background: var(--white); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+    .case-nav-btn:hover { box-shadow: none; transform: translate(4px,4px); }
+    .case-nav-btn.next { background: var(--pink); }
+
+    /* FOOTER */
+    footer { padding: 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; max-width: none; }
+    .footer-copy { font-size: 13px; color: #666; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-a { font-size: 13px; font-weight: 700; text-decoration: none; color: var(--black); border-bottom: 2px solid var(--black); }
+    .footer-a:hover { color: #c070b8; border-color: #c070b8; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .55s, transform .55s cubic-bezier(.25,.46,.45,.94); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+
+    @media (max-width: 800px) {
+      .process-grid, .solution-row, .screens-grid { grid-template-columns: 1fr; }
+      .cs-meta { flex-wrap: wrap; }
+      .cs-meta-item { border-right: none; border-bottom: var(--border); }
+      .cs-meta-item:last-child { border-bottom: none; }
+      section { padding: 56px 24px; }
+      .cs-hero { padding: 48px 24px 0; }
+      .case-nav { padding: 32px 24px; }
+      footer { padding: 24px; }
+      .nav-inner { padding: 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-back">← Back to portfolio</a>
+      <a href="index.html" class="nav-logo">Youssif Amin ✦</a>
+      <a href="https://drive.google.com/file/d/1ZcOJcZIwF0z_jcIkez8Y3pKlk18yOTrE/view?usp=sharing" target="_blank" rel="noopener" class="nav-resume">Resume ↗</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-inner">
+      <div class="cs-tag">Case Study</div>
+      <h1 class="cs-title">WorkClub: Unlocking Flexible Workspaces On-Demand</h1>
+      <div class="cs-meta">
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Company</div>
+          <div class="cs-meta-val">Workclub</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Role</div>
+          <div class="cs-meta-val">Product Design</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Year</div>
+          <div class="cs-meta-val">2021</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Timeline</div>
+          <div class="cs-meta-val">8 Months</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="https://framerusercontent.com/images/RFKGeN5Fbsi3qlbTjlUOEN3Qg8.png" alt="Workclub app overview" onerror="this.style.minHeight='320px'; this.style.display='block';" />
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="container">
+      <div class="section-label reveal">The Problem</div>
+      <h2 class="section-heading reveal">Finding flexible workspaces shouldn't be this hard.</h2>
+      <p class="body-text reveal">
+        Freelancers, remote workers, and startups in major cities struggle to find <strong>affordable, flexible, and productive workspaces</strong>. Traditional coworking spaces require costly memberships, while coffee shops often lack reliable WiFi, quiet spaces, and a professional environment. Workers needed a <strong>pay-as-you-go solution</strong> that gives access to high-quality workspaces without long-term commitments.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section>
+    <div class="container">
+      <div class="section-label reveal">My Process</div>
+      <h2 class="section-heading reveal">Research-first, design-second.</h2>
+      <div class="process-grid">
+        <div class="process-card yellow reveal">
+          <div class="process-num">01</div>
+          <div class="process-card-title">Research & Planning</div>
+          <ul class="process-list">
+            <li>Interviewed remote workers, freelancers & startup teams</li>
+            <li>Analyzed competitors: WeWork, Regus, traditional memberships</li>
+            <li>Studied the rise of remote & hybrid work</li>
+            <li>Built detailed user personas</li>
+          </ul>
+        </div>
+        <div class="process-card green reveal d1">
+          <div class="process-num">02</div>
+          <div class="process-card-title">Design & Prototyping</div>
+          <ul class="process-list">
+            <li>User flow mapping & journey maps</li>
+            <li>Low-fidelity wireframes for key screens</li>
+            <li>High-fidelity UI aligned with Workclub's brand</li>
+            <li>Interactive Figma prototype</li>
+          </ul>
+        </div>
+        <div class="process-card blue reveal d2">
+          <div class="process-num">03</div>
+          <div class="process-card-title">Testing & Optimization</div>
+          <ul class="process-list">
+            <li>Usability testing with real users</li>
+            <li>A/B tested UI variations to optimize conversion</li>
+            <li>Detailed design specs for developer handoff</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section>
+    <div class="container">
+      <div class="section-label reveal">The Solution</div>
+      <h2 class="section-heading reveal">An on-demand network of workspaces.</h2>
+      <p class="body-text reveal" style="margin-bottom: 40px;">
+        Workclub partners with <strong>underutilized venues</strong> — hotels, cafes, and coworking spaces — to create a flexible, affordable workspace network accessible through a simple app.
+      </p>
+      <div class="solution-row">
+        <div class="sol-card reveal">
+          <div class="sol-icon">⚡</div>
+          <div class="sol-title">Access Instantly</div>
+          <div class="sol-desc">No need for expensive memberships. Book a workspace on demand, in seconds.</div>
+        </div>
+        <div class="sol-card reveal d1">
+          <div class="sol-icon">💳</div>
+          <div class="sol-title">Flexible Pricing</div>
+          <div class="sol-desc">Pay only for the time and services you actually need. No hidden fees.</div>
+        </div>
+        <div class="sol-card reveal d2">
+          <div class="sol-icon">🤝</div>
+          <div class="sol-title">Community & Networking</div>
+          <div class="sol-desc">Connect with like-minded professionals in inspiring, productive spaces.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENS -->
+  <section>
+    <div class="container">
+      <div class="section-label reveal">Key Screens</div>
+      <h2 class="section-heading reveal">Designed for clarity at every step.</h2>
+      <div class="screens-grid">
+        <div class="screen-card reveal">
+          <img src="https://framerusercontent.com/images/RFKGeN5Fbsi3qlbTjlUOEN3Qg8.png" alt="Map View" onerror="this.style.background='#ddd'; this.style.minHeight='300px';" />
+          <div class="screen-label">
+            <div class="screen-label-title">Map View</div>
+            <div class="screen-label-desc">Discover available coworking spaces on a map. Search by location, apply filters, view details.</div>
+          </div>
+        </div>
+        <div class="screen-card reveal d1">
+          <img src="https://framerusercontent.com/images/y0mUSqPFznTMOHAkXcTN3Lrgk.png" alt="Workspace Details" onerror="this.style.background='#ddd'; this.style.minHeight='300px';" />
+          <div class="screen-label">
+            <div class="screen-label-title">Workspace Details & Booking</div>
+            <div class="screen-label-desc">Images, capacity, pricing, and location. Check availability and book in one tap.</div>
+          </div>
+        </div>
+        <div class="screen-card reveal d2">
+          <img src="https://framerusercontent.com/images/JnhxStDbKsUiKbqKwks7MadaE.png" alt="Booking Confirmation" onerror="this.style.background='#ddd'; this.style.minHeight='300px';" />
+          <div class="screen-label">
+            <div class="screen-label-title">Booking Confirmation</div>
+            <div class="screen-label-desc">Booking details at a glance — date, time, duration, price. Invite guests and add to calendar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <div class="results-band">
+    <div class="results-inner">
+      <div class="section-label reveal">Results</div>
+      <p class="results-text reveal">
+        Workclub was acquired by Upflex after closing a $350K funding round — with thousands of satisfied users and a validated product.
+      </p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;">
+        <span class="results-kpi reveal">🏆 Acquired by Upflex</span>
+        <span class="results-kpi reveal d1">💰 $350K raised</span>
+        <span class="results-kpi reveal d2">👥 Thousands of users</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE NAV -->
+  <div class="case-nav">
+    <div class="case-nav-inner">
+      <a href="index.html" class="case-nav-btn">← All Projects</a>
+      <a href="pickapp.html" class="case-nav-btn next">Next: Pick App →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Youssif Amin.</span>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/youssifamin/" class="footer-a" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://drive.google.com/file/d/1ZcOJcZIwF0z_jcIkez8Y3pKlk18yOTrE/view?usp=sharing" class="footer-a" target="_blank" rel="noopener">Resume</a>
+      <a href="mailto:info@beyond.com.sa" class="footer-a">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
